@@ -4,7 +4,7 @@
  * @num: input number as an integer
  * Return: absolute value
  */
-int _abs(int num);
+int _abs(int num)
 {
 	if (num <= 0)
 	{
@@ -14,4 +14,5 @@ int _abs(int num);
 	{
 		return (num);
 	}
+	_putchar('\n');
 }
