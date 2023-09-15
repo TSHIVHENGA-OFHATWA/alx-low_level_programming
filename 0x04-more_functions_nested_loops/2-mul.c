@@ -5,10 +5,10 @@
  * @b: second number
  * Return: multiplication of two the number
  */
-int multi(int a, int b)
+int mul(int a, int b)
 {
-	int multi;
+	int mul;
 
-	multi = a * b;
-	return (multi);
+	mul = a * b;
+	return (mul);
 }
