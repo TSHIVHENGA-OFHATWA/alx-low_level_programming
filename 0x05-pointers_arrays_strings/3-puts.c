@@ -12,11 +12,11 @@ void _puts(char *str)
 	for (a = 0; str[a] != '\0'; a++)
 	{
 		_putchar(str[a]);
+
+		if (*str == '\0')
+		{
+		 	break;
+		}
 	}
-	if (str == '\0')
-	{
-		break;
-	}
-	return (str[a]);
-	-putchar('\n');
+	_putchar('\n');
 }
