@@ -15,7 +15,7 @@ void _puts(char *str)
 
 		if (*str == '\0')
 		{
-		 	break;
+			break;
 		}
 	}
 	_putchar('\n');
