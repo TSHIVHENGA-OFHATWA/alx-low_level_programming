@@ -1,8 +1,10 @@
-#include "main.h" 
+#include "main.h"
+
 /**
  * main - prints the numbers from 1 to 100, followed by a new line
  * Return: Always 0 for success.
  */
+
 int main(void)
 {
 	int i;
@@ -11,7 +13,7 @@ int main(void)
 	{
 		if ((i % 3 == 0) && (i % 5 == 0))
 		{
-			printf("fizzbuzz");
+			printf("fizzBuzz");
 		}
 		else if ((i % 3) == 0)
 		{
@@ -19,7 +21,7 @@ int main(void)
 		}
 		else if ((i % 5) == 0)
 		{
-			printf("buzz");
+			printf("Buzz");
 		}
 		else
 		{
