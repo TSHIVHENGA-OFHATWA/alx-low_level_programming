@@ -7,24 +7,36 @@
 
 void rev_string(char *s)
 {
-	char string1 = s[0];
+	int length, i;
+	char hold;
 
-	int length, a;
+	length = _strlen(s);
+
+	for (i = 0; i < (length / 2); i++)
+	{
+		hold = s[i];
+		s[i] = s[length - 1 - i];
+		s[length - 1 - i] = hold;
+	}
+}
+
+
+/**
+ *_strlen - function that returns the length of a string.
+ * @s: The parameter passed as character of string.
+ * Return: string's length.
+ */
+
+int _strlen(char *s)
+{
+	int length;
 
 	length = 0;
-	a = 0;
 
-	while (s[length] != '\0')
+	while (*s != '\0')
 	{
 		length++;
+		s++;
 	}
-
-	while (a < length)
-	{
-		length--;
-		string1 = s[a];
-		s[a] = s[length];
-		s[length] = string1;
-		a++;
-	}
+	return (length);
 }
