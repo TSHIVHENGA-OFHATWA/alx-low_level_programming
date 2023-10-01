@@ -11,10 +11,11 @@
 char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
+	int length = _strlen(srs[i]);
 
 	while (src[i] != '\0')
 	{
-		if (src[i]  == '\0')
+		if (src[i] == length - 2)
 		{
 			break;
 		}
@@ -25,4 +26,24 @@ char *_strcpy(char *dest, char *src)
 		}
 	}
 	return (dest);
+}
+
+/**
+ *_strlen - function that returns the length of a string.
+ * @s: The parameter passed as character of string.
+ * Return: string's length.
+ */
+
+int _strlen(char *s)
+{
+	int length;
+
+	length = 0;
+
+	while (*s != '\0')
+	{
+		length++;
+		s++;
+	}
+	return (length);
 }
