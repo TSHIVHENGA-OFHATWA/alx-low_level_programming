@@ -10,19 +10,34 @@
  */
 char *_strcpy(char *dest, char *src)
 {
-	int i = 0;
+	int i, len1, len2;
 
-	while (src[i] != '\0')
+	len1 = _strlen(dest);
+	len2 = _strlen(src);
+
+	for (i = 0; i <= len2; i++)
 	{
-		if (src[i] == sizeof(dest))
-		{
-			break;
-		}
-		else
-		{
-			dest[i] = src[i];
-			i++;
-		}
+		dest[len1 + i] = src[i];
 	}
 	return (dest);
+}
+
+/**
+ *_strlen - function that returns the length of a string.
+ * @s: The parameter passed as character of string.
+ * Return: string's length.
+ */
+
+int _strlen(char *s)
+{
+	int length;
+
+	length = 0;
+
+	while (*s != '\0')
+	{
+		length++;
+		s++;
+	}
+	return (length);
 }
