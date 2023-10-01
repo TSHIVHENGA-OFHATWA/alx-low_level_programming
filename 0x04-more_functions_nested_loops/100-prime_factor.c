@@ -14,7 +14,7 @@ int main(void)
 
 	for (num = 3; num < lgst_prime; num += 2)
 	{
-		while ((lgst_prime % 2) == 0 && (lgst_prime != num))
+		while (((lgst_prime % num) == 0) && (lgst_prime != num))
 		{
 			lgst_prime /= num;
 		}
