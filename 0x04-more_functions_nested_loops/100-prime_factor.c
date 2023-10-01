@@ -12,7 +12,7 @@ int main(void)
 
 	lgst_prime = 612852475143;
 
-	for (num = 1; num < lgst_prime; num += 2)
+	for (num = 3; num < lgst_prime; num += 2)
 	{
 		while ((lgst_prime % 2) == 0 && (lgst_prime != num))
 		{
