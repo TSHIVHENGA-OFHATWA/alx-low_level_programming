@@ -19,10 +19,12 @@ char *_strdup(char *str)
 	{
 		return (NULL);
 	}
-	for (; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		length++;
-		s[i] = str[i];
+		for (length = 0; length <= i; length++)
+		{
+			s[length] = str[length];
+		}
 	}
 	return (s);
 }
