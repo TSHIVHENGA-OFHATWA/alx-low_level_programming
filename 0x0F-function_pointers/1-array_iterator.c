@@ -7,6 +7,7 @@
  * @size: size of the array
  * @action: pointer to the function you need to use
  */
+
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
 	int i = 0;
@@ -15,7 +16,7 @@ void array_iterator(int *array, size_t size, void (*action)(int))
 	{
 		return;
 	}
-	for (; size  <  0; s--)
+	for (; size > 0; s--)
 	{
 		action(*array);
 	}
