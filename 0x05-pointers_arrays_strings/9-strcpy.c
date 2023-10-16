@@ -23,11 +23,17 @@ char *_strcpy(char *dest, char *src)
 {
 	int length;
 
-	for (; src[length] != '\0'; ++length)
+	for (; src[length] != '\0';)
 	{
 		dest[length] = src[length];
+		length++;
+	
+	if (src[length] == '\0')
+	{
+		dest[length] = '\0';
+		break;
 	}
-	dest[length] = '\0';
+	}
 	return (dest);
 }
 
