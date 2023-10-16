@@ -7,7 +7,7 @@
 
 void rev_string(char *s)
 {
-	int length, i;
+	int length, i; 
 	char hold;
 
 	length = _strlen(s);
@@ -17,10 +17,8 @@ void rev_string(char *s)
 		hold = s[i];
 		s[i] = s[length - 1 - i];
 		s[length - 1 - i] = hold;
-	}
+	} 
 }
-
-
 /**
  *_strlen - function that returns the length of a string.
  * @s: The parameter passed as character of string.
