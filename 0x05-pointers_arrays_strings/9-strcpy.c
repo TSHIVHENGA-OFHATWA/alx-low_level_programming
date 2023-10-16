@@ -23,7 +23,7 @@ char *_strcpy(char *dest, char *src)
 {
 	int length;
 
-	for (; src[length] != '\0'; length++)
+	for (; src[length] != '\0'; ++length)
 	{
 		dest[length] = src[length];
 	}
