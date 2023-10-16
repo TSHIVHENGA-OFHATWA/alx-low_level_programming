@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string.h>
 
 /**
  * _strcpy - It copies the string pointed to by src,
@@ -10,30 +9,34 @@
  * Return: destination string
  */
 char *_strcpy(char *dest, char *src)
-/*{
-	int i = -1;
-
-	do {
-		i++;
-		dest[i] = src[i];
-	} while (src[i] != '\0');
-
-	return (dest);
-}*/
 {
-	int length;
+	int i, len2;
 
-	for (; src[length] != '\0';)
+	len2 = _strlen(src);
+
+	for (i = 0; i <= len2; i++)
 	{
-		dest[length] = src[length];
-		length++;
-	
-	if (src[length] == '\0')
-	{
-		dest[length] = '\0';
-		break;
-	}
+		dest[i] = src[i];
 	}
 	return (dest);
 }
 
+/**
+ *_strlen - function that returns the length of a string.
+ * @s: The parameter passed as character of string.
+ * Return: string's length.
+ */
+
+int _strlen(char *s)
+{
+	int length;
+
+	length = 0;
+
+	while (*s != '\0')
+	{
+		length++;
+		s++;
+	}
+	return (length);
+}
