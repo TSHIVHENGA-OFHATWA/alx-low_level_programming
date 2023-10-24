@@ -1,10 +1,12 @@
 #include "lists.h"
+
 /**
- * print_listint - prints all the elements of a listint_t list.
+ * listint_len - returns the number of elements in a linked listint_t list.
  * @h: head pointing to first node
- * Return: the number of nodes
+ * Return: number of elements in a linked listint list.
  */
-size_t print_listint(const listint_t *h)
+
+size_t listint_len(const listint_t *h)
 {
 	int count = 0;
 
@@ -12,7 +14,6 @@ size_t print_listint(const listint_t *h)
 		return (0);
 	while (h != NULL)
 	{
-		printf("%d\n", h->n);
 		count++;
 		h = h->next;
 	}
