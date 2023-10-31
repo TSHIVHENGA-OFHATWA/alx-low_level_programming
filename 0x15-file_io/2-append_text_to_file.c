@@ -10,7 +10,7 @@
 int append_text_to_file(const char *filename, char *text_content)
 {
 	FILE *file;
-	int result;
+	size_t bytes_written, length;
 
 	if (filename == NULL || text_content == NULL)
 		return (-1);
@@ -20,10 +20,11 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (file == NULL)
 		return (-1);
 
-	result = fputs(text_content, file);
+	length = strlen(text_content);
+	bytes_written = fwrite(text_content, 1, length, file);
 	fclose(file);
 
-	if (result == EOF)
+	if (bytes_written != length)
 		return (-1);
 
 	return (1);
