@@ -1,0 +1,219 @@
+[4misalpha[24m(3)                                                            Library Functions Manual                                                           [4misalpha[24m(3)
+
+[1mNAME[0m
+       isalnum,  isalpha,  isascii, isblank, iscntrl, isdigit, isgraph, islower, isprint, ispunct, isspace, isupper, isxdigit, isalnum_l, isalpha_l, isascii_l, is‐
+       blank_l, iscntrl_l, isdigit_l, isgraph_l, islower_l, isprint_l, ispunct_l, isspace_l, isupper_l, isxdigit_l - character classification functions
+
+[1mLIBRARY[0m
+       Standard C library ([4mlibc[24m, [4m-lc[24m)
+
+[1mSYNOPSIS[0m
+       [1m#include <ctype.h>[0m
+
+       [1mint isalnum(int [4m[22mc[24m[1m);[0m
+       [1mint isalpha(int [4m[22mc[24m[1m);[0m
+       [1mint iscntrl(int [4m[22mc[24m[1m);[0m
+       [1mint isdigit(int [4m[22mc[24m[1m);[0m
+       [1mint isgraph(int [4m[22mc[24m[1m);[0m
+       [1mint islower(int [4m[22mc[24m[1m);[0m
+       [1mint isprint(int [4m[22mc[24m[1m);[0m
+       [1mint ispunct(int [4m[22mc[24m[1m);[0m
+       [1mint isspace(int [4m[22mc[24m[1m);[0m
+       [1mint isupper(int [4m[22mc[24m[1m);[0m
+       [1mint isxdigit(int [4m[22mc[24m[1m);[0m
+
+       [1mint isascii(int [4m[22mc[24m[1m);[0m
+       [1mint isblank(int [4m[22mc[24m[1m);[0m
+
+       [1mint isalnum_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint isalpha_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint isblank_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint iscntrl_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint isdigit_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint isgraph_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint islower_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint isprint_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint ispunct_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint isspace_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint isupper_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+       [1mint isxdigit_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+
+       [1mint isascii_l(int [4m[22mc[24m[1m, locale_t [4m[22mlocale[24m[1m);[0m
+
+   Feature Test Macro Requirements for glibc (see [1mfeature_test_macros[22m(7)):
+
+       [1misascii[22m():
+           _XOPEN_SOURCE
+               || /* glibc >= 2.19: */ _DEFAULT_SOURCE
+               || /* glibc <= 2.19: */ _SVID_SOURCE
+
+       [1misblank[22m():
+           _ISOC99_SOURCE || _POSIX_C_SOURCE >= 200112L
+
+       [1msalnum_l[22m(), [1msalpha_l[22m(), [1msblank_l[22m(), [1mscntrl_l[22m(), [1msdigit_l[22m(), [1msgraph_l[22m(), [1mslower_l[22m(), [1msprint_l[22m(), [1mspunct_l[22m(), [1msspace_l[22m(), [1msupper_l[22m(), [1msxdigit_l[22m():
+           Since glibc 2.10:
+               _XOPEN_SOURCE >= 700
+           Before glibc 2.10:
+               _GNU_SOURCE
+
+       [1misascii_l[22m():
+           Since glibc 2.10:
+               _XOPEN_SOURCE >= 700 && (_SVID_SOURCE || _BSD_SOURCE)
+           Before glibc 2.10:
+               _GNU_SOURCE
+
+[1mDESCRIPTION[0m
+       These functions check whether [4mc[24m, which must have the value of an [4munsigned[24m [4mchar[24m or [1mEOF[22m, falls into a certain character class according to the  specified  lo‐
+       cale.  The functions without the "_l" suffix perform the check based on the current locale.
+
+       The  functions  with  the "_l" suffix perform the check based on the locale specified by the locale object [4mlocale[24m.  The behavior of these functions is unde‐
+       fined if [4mlocale[24m is the special locale object [1mLC_GLOBAL_LOCALE [22m(see [1mduplocale[22m(3)) or is not a valid locale object handle.
+
+       The list below explains the operation of the functions without the "_l" suffix; the functions with the "_l" suffix differ only in using  the  locale  object
+       [4mlocale[24m instead of the current locale.
+
+       [1misalnum[22m()
+              checks for an alphanumeric character; it is equivalent to [1m(isalpha([4m[22mc[24m[1m) || isdigit([4m[22mc[24m[1m))[22m.
+
+       [1misalpha[22m()
+              checks  for an alphabetic character; in the standard [1m"C" [22mlocale, it is equivalent to [1m(isupper([4m[22mc[24m[1m) || islower([4m[22mc[24m[1m))[22m.  In some locales, there may be addi‐
+              tional characters for which [1misalpha[22m() is true—letters which are neither uppercase nor lowercase.
+
+       [1misascii[22m()
+              checks whether [4mc[24m is a 7-bit [4munsigned[24m [4mchar[24m value that fits into the ASCII character set.
+
+       [1misblank[22m()
+              checks for a blank character; that is, a space or a tab.
+
+       [1miscntrl[22m()
+              checks for a control character.
+
+       [1misdigit[22m()
+              checks for a digit (0 through 9).
+
+       [1misgraph[22m()
+              checks for any printable character except space.
+
+       [1mislower[22m()
+              checks for a lowercase character.
+
+       [1misprint[22m()
+              checks for any printable character including space.
+
+       [1mispunct[22m()
+              checks for any printable character which is not a space or an alphanumeric character.
+
+       [1misspace[22m()
+              checks for white-space characters.  In the [1m"C" [22mand [1m"POSIX" [22mlocales, these are: space, form-feed ([1m'\f'[22m), newline ([1m'\n'[22m), carriage return ([1m'\r'[22m), hori‐
+              zontal tab ([1m'\t'[22m), and vertical tab ([1m'\v'[22m).
+
+       [1misupper[22m()
+              checks for an uppercase letter.
+
+       [1misxdigit[22m()
+              checks for hexadecimal digits, that is, one of
+              [1m0 1 2 3 4 5 6 7 8 9 a b c d e f A B C D E F[22m.
+
+[1mRETURN VALUE[0m
+       The values returned are nonzero if the character [4mc[24m falls into the tested class, and zero if not.
+
+[1mATTRIBUTES[0m
+       For an explanation of the terms used in this section, see [1mattributes[22m(7).
+       ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────────────┬─────────┐
+       │ [1mInterface                                                                                                                      [22m│ [1mAttribute     [22m│ [1mValue   [22m│
+       ├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────┼─────────┤
+       │ [1misalnum[22m(), [1misalpha[22m(), [1misascii[22m(), [1misblank[22m(), [1miscntrl[22m(), [1misdigit[22m(), [1misgraph[22m(), [1mislower[22m(), [1misprint[22m(), [1mispunct[22m(), [1misspace[22m(),       │ Thread safety │ MT-Safe │
+       │ [1misupper[22m(), [1misxdigit[22m()                                                                                                          │               │         │
+       └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────┴─────────┘
+
+[1mSTANDARDS[0m
+       [1misalnum[22m()
+       [1misalpha[22m()
+       [1miscntrl[22m()
+       [1misdigit[22m()
+       [1misgraph[22m()
+       [1mislower[22m()
+       [1misprint[22m()
+       [1mispunct[22m()
+       [1misspace[22m()
+       [1misupper[22m()
+       [1misxdigit[22m()
+       [1misblank[22m()
+              C11, POSIX.1-2008.
+
+       [1misascii[22m()
+       [1misalnum_l[22m()
+       [1misalpha_l[22m()
+       [1misblank_l[22m()
+       [1miscntrl_l[22m()
+       [1misdigit_l[22m()
+       [1misgraph_l[22m()
+       [1mislower_l[22m()
+       [1misprint_l[22m()
+       [1mispunct_l[22m()
+       [1misspace_l[22m()
+       [1misupper_l[22m()
+       [1misxdigit_l[22m()
+              POSIX.1-2008.
+
+       [1misascii_l[22m()
+              GNU.
+
+[1mHISTORY[0m
+       [1misalnum[22m()
+       [1misalpha[22m()
+       [1miscntrl[22m()
+       [1misdigit[22m()
+       [1misgraph[22m()
+       [1mislower[22m()
+       [1misprint[22m()
+       [1mispunct[22m()
+       [1misspace[22m()
+       [1misupper[22m()
+       [1misxdigit[22m()
+              C89, POSIX.1-2001.
+
+       [1misblank[22m()
+              C99, POSIX.1-2001.
+
+       [1misascii[22m()
+              POSIX.1-2001 (XSI).
+
+              POSIX.1-2008 marks it as obsolete, noting that it cannot be used portably in a localized application.
+
+       [1misalnum_l[22m()
+       [1misalpha_l[22m()
+       [1misblank_l[22m()
+       [1miscntrl_l[22m()
+       [1misdigit_l[22m()
+       [1misgraph_l[22m()
+       [1mislower_l[22m()
+       [1misprint_l[22m()
+       [1mispunct_l[22m()
+       [1misspace_l[22m()
+       [1misupper_l[22m()
+       [1misxdigit_l[22m()
+              glibc 2.3.  POSIX.1-2008.
+
+       [1misascii_l[22m()
+              glibc 2.3.
+
+[1mCAVEATS[0m
+       The standards require that the argument [4mc[24m for these functions is either [1mEOF [22mor a value that is representable in the type [4munsigned[24m [4mchar[24m; otherwise,  the  be‐
+       havior is undefined.  If the argument [4mc[24m is of type [4mchar[24m, it must be cast to [4munsigned[24m [4mchar[24m, as in the following example:
+
+           char c;
+           ...
+           res = toupper((unsigned char) c);
+
+       This is necessary because [4mchar[24m may be the equivalent of [4msigned[24m [4mchar[24m, in which case a byte where the top bit is set would be sign extended when converting to
+       [4mint[24m, yielding a value that is outside the range of [4munsigned[24m [4mchar[24m.
+
+       The details of what characters belong to which class depend on the locale.  For example, [1misupper[22m() will not recognize an A-umlaut (Ä) as an uppercase letter
+       in the default [1mC [22mlocale.
+
+[1mSEE ALSO[0m
+       [1miswalnum[22m(3), [1miswalpha[22m(3), [1miswblank[22m(3), [1miswcntrl[22m(3), [1miswdigit[22m(3), [1miswgraph[22m(3), [1miswlower[22m(3), [1miswprint[22m(3), [1miswpunct[22m(3), [1miswspace[22m(3), [1miswupper[22m(3), [1miswxdigit[22m(3),
+       [1mnewlocale[22m(3), [1msetlocale[22m(3), [1mtoascii[22m(3), [1mtolower[22m(3), [1mtoupper[22m(3), [1muselocale[22m(3), [1mascii[22m(7), [1mlocale[22m(7)
+
+Linux man-pages 6.05.01                                                      2023-07-30                                                                  [4misalpha[24m(3)
