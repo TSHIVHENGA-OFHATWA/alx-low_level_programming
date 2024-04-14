@@ -7,9 +7,9 @@
 
 int main(void)
 {
-	int count = 50, num_1 = 0, num_2 = 1, next_num, loop;
+	int total = 50, num_1 = 0, num_2 = 1, next_num, loop;
 
-	for (loop = 0; loop < count; loop++)
+	for (loop = 0; loop < total; loop++)
 	{
 		if (loop <= 1)
 			next_num = loop;
