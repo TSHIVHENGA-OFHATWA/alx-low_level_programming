@@ -22,7 +22,7 @@ int _strcmp(char *s1, char *s2)
 	{
 		return (s1[loop] - s2[loop]);
 	}
-	else 
+	else
 	{
 		return (s1[loop] - s2[loop]);
 	}
