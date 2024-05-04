@@ -1,7 +1,20 @@
 #include "main.h"
+#include <string.h>
+#include <ctype.h>
+/**
+ * is_separator - the separator of word.
+ * @c: the separator
+ * Return: The character
+ */
+
+int is_separator(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n' || c == ',' || c == ';' || c == '.' || c == '!' || c == '?' || c == '"' || c == '(' || c == ')' || c == '{' || c == '}');
+}
 
 /**
  * cap_string - capitalizes all words of string.
+ * @str: string
  * Return: A capitalized strings.
  */
 char *cap_string(char *str)
@@ -17,8 +30,8 @@ char *cap_string(char *str)
 		}
 		else if (cap_next)
 		{
-			str[i] = toupper(str[i])
-			cap_next = 0;
+			str[i] = toupper(str[i]);
+				cap_next = 0;
 		}
 		else
 		{
@@ -26,9 +39,5 @@ char *cap_string(char *str)
 		}
 
 	}
-}
-
-int is_separator(char c) 
-{
-	return c == ' ' || c == '\t' || c == '\n' || c == ',' || c == ';' || c == '.' || c == '!' || c == '?' || c == '"' || c == '(' || c == ')' || c == '{' || c == '}';
+	return (str);
 }
