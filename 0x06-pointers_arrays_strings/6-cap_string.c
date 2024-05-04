@@ -1,16 +1,4 @@
 #include "main.h"
-#include <string.h>
-#include <ctype.h>
-/**
- * is_separator - the separator of word.
- * @c: the separator
- * Return: The character
- */
-
-int is_separator(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\n' || c == ',' || c == ';' || c == '.' || c == '!' || c == '?' || c == '"' || c == '(' || c == ')' || c == '{' || c == '}');
-}
 
 /**
  * cap_string - capitalizes all words of string.
@@ -19,24 +7,29 @@ int is_separator(char c)
  */
 char *cap_string(char *str)
 {
-	int cap_next = 1, i;
-	int length = strlen(str);
+	int loop = 0;
 
-	for (i = 0; i < length; i++)
+	while (str[loop])
 	{
-		if (is_separator(str[i]))
-		{
-			cap_next = 1;
-		}
-		else if (cap_next)
-		{
-			str[i] = toupper(str[i]);
-				cap_next = 0;
-		}
-		else
-		{
-			str[i] = tolower(str[i]);
-		}
+		while (!(str[loop] >= 97 && str[loop] <= 122))
+			loop++;
+		if (str[loop - 1] == ' ' ||
+		str[loop - 1] == '\t' ||
+		str[loop - 1] == '\n' ||
+		str[loop - 1] == ',' ||
+		str[loop - 1] == '.' ||
+		str[loop - 1] == '?' ||
+		str[loop - 1] == '"' ||
+		str[loop - 1] == '(' ||
+		str[loop - 1] == ')' ||
+		str[loop - 1] == '{' ||
+		str[loop - 1] == '!' ||
+		str[loop - 1] == '' ||
+		str[loop - 1] == 't' ||
+		loop == 0)
+			str[loop] -= 32;
+		loop++;
+
 
 	}
 	return (str);
