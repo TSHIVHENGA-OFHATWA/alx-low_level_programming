@@ -24,8 +24,6 @@ char *cap_string(char *str)
 		str[loop - 1] == ')' ||
 		str[loop - 1] == '{' ||
 		str[loop - 1] == '!' ||
-		str[loop - 1] == '' ||
-		str[loop - 1] == 't' ||
 		loop == 0)
 			str[loop] -= 32;
 		loop++;

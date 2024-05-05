@@ -8,32 +8,21 @@
  */
 char *leet(char *str)
 {
-	int i;
-	char c;
-	char *leet_str = malloc(strlen(str) + 1);
+	int i, j;
 
-	if (leet_str == NULL)
+	char s1[] = "aAeEoOtTlL";
+	char s2[] = "4433007711";
+
+
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		printf("Memory allocation failed.\n");
-		exit(1);
+		for (j = 0; j < 10; j++)
+		{
+			if (str[i] == s1[j])
+			{
+				str[i] = s2[j];
+			}
+		}
 	}
-
-	strcpy(leet_str, str);
-
-	for (i = 0; leet_str[i] != '\0'; i++)
-	{
-		c = leet_str[i];
-
-		if (c == 'a' || c == 'A')
-			leet_str[i] = '4';
-		else if (c == 'e' || c == 'E')
-			leet_str[i] = '3';
-		else if (c == 'o' || c == 'O')
-			leet_str[i] = '0';
-		else if (c == 't' || c == 'T')
-			leet_str[i] = '7';
-		else if (c == 'l' || c == 'L')
-			leet_str[i] = '1';
-	}
-	return (leet_str);
+	return (str);
 }
