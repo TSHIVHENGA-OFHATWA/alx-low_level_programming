@@ -7,18 +7,24 @@
  */
 char *rot13(char *str)
 {
-	char *ptr = str;
+	char *p = str;
+	int is_upper;
+	int base;
+	char c;
 
-	while (*ptr != '\0')
+	while (*p != '\0')
 	{
-		if ((*ptr >= 'a' && *ptr <= 'z') || (*ptr >= 'A' && *ptr <= 'Z'))
+		c = *p;
+
+		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 		{
-			if ((*ptr >= 'a' && *ptr <= 'm') || (*ptr >= 'A' && *ptr <= 'M'))
-				*ptr += 13;
-			else
-				*ptr -= 13;
+			is_upper = (c >= 'A' && c <= 'Z');
+			base = is_upper ? 'A' : 'a';
+			*p = (c - base + 13) % 26 + base;
 		}
-		ptr++;
+
+		p++;
 	}
+
 	return (str);
 }
