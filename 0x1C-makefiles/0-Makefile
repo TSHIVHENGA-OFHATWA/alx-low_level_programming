@@ -1,0 +1,25 @@
+# Makefile for building the school executable
+
+# The target executable
+EXEC = school
+
+# Source files
+SRCS = main.c
+
+# Compiler
+CC = gcc
+
+# Compiler flags
+CFLAGS = -Wall -Wextra -pedantic -std=c11
+
+# The default rule
+all: $(EXEC)
+
+# Rule to build the executable
+$(EXEC): $(SRCS)
+	$(CC) $(CFLAGS) -o $(EXEC) $(SRCS)
+
+# Clean rule to remove the executable
+clean:
+	rm -f $(EXEC)
+
